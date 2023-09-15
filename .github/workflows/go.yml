@@ -1,0 +1,40 @@
+name: Go
+
+on:
+  push:
+    tags:
+      - 'v*'
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v4
+        with:
+          go-version: '1.21'
+
+      - name: Test
+        run: go test ./...
+
+  test-generator:
+    name: test-generator
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v4
+        with:
+          go-version: '1.21'
+
+      - name: Test
+        working-directory: ./internal/generator
+        run: go run .
