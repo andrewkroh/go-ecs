@@ -1,0 +1,43 @@
+---
+
+run:
+  issues-exit-code: 1
+  modules-download-mode: readonly
+
+linters:
+  disable-all: true
+  enable:
+    - errcheck
+    - gosimple
+    - govet
+    - ineffassign
+    - staticcheck
+    - stylecheck
+    - typecheck
+    - unused
+    - errorlint
+    - gofumpt
+    - goimports
+    - godox
+    - misspell
+    - prealloc
+    - unconvert
+    - unused
+    - revive
+  fast: false
+
+linters-settings:
+  goimports:
+    local-prefixes: github.com/andrewkroh/go-ecs
+  gofumpt:
+    extra-rules: true
+  stylecheck:
+    checks:
+      - all
+
+issues:
+  include:
+   # If you're going to write a comment follow the conventions.
+   # https://go.dev/doc/effective_go#commentary.
+   # comment on exported (.+) should be of the form "(.+)..."
+   - EXC0014
