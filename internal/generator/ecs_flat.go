@@ -114,9 +114,9 @@ func (f *field) isArray() bool {
 			case string:
 				if v == "array" {
 					return true
-				} else {
-					panic(fmt.Errorf("unhandled value for 'normalize' field of %q: %q", f.Name, v))
 				}
+
+				panic(fmt.Errorf("unhandled value for 'normalize' field of %q: %q", f.Name, v))
 			default:
 				panic(fmt.Errorf("unhandled value type for 'normalize' field value type %T in field %q", item, f.Name))
 			}
@@ -124,9 +124,8 @@ func (f *field) isArray() bool {
 	case string:
 		if v == "array" {
 			return true
-		} else {
-			panic(fmt.Errorf("unhandled value for 'normalize' field of %q: %q", f.Name, v))
 		}
+		panic(fmt.Errorf("unhandled value for 'normalize' field of %q: %q", f.Name, v))
 	case nil:
 	default:
 		panic(fmt.Errorf("unhandled value type for 'normalize' field value type %T in field %q", f.Normalize, f.Name))
