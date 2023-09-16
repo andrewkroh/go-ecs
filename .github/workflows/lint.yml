@@ -28,9 +28,9 @@ jobs:
 
       - name: golangci-lint
         uses: golangci/golangci-lint-action@v3
-        working-directory: ./internal/generator
         with:
           version: latest
+          working-directory: ./internal/generator
 
   go-mod-tidy:
     name: go-mod-tidy
