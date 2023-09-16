@@ -29,7 +29,7 @@ type Field struct {
 	Array bool `json:"array" yaml:"array"`
 
 	// Regular expression pattern that can be used to validate the value.
-	Pattern string `json:"pattern" yaml:"pattern"`
+	Pattern string `json:"pattern,omitempty" yaml:"pattern,omitempty"`
 
 	// Short description of the field.
 	Description string `json:"description" yaml:"description"`
