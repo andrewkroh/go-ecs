@@ -15,6 +15,10 @@
 // specific language governing permissions and limitations
 // under the License.
 
+// Package ecs go-ecs is a library for querying Elastic Common Schema (ECS)
+// fields by name to obtain the fields definition (e.g. Elasticsearch field data
+// type, description, etc.). The library includes data from tagged released of
+// https://github.com/elastic/ecs.
 package ecs
 
 import (
