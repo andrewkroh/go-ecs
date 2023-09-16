@@ -5,6 +5,7 @@ go 1.21
 require (
 	github.com/coreos/go-semver v0.3.1
 	github.com/dave/jennifer v1.7.0
+	github.com/elastic/go-licenser v0.4.2-0.20230608174114-6eca7dbbc006
 	github.com/go-git/go-git/v5 v5.9.0
 	github.com/mitchellh/hashstructure v1.1.0
 	gopkg.in/yaml.v3 v3.0.1
@@ -17,7 +18,6 @@ require (
 	github.com/acomagu/bufpipe v1.0.4 // indirect
 	github.com/cloudflare/circl v1.3.3 // indirect
 	github.com/cyphar/filepath-securejoin v0.2.4 // indirect
-	github.com/elastic/go-licenser v0.4.2-0.20230608174114-6eca7dbbc006 // indirect
 	github.com/emirpasic/gods v1.18.1 // indirect
 	github.com/go-git/gcfg v1.5.1-0.20230307220236-3a3c6141e376 // indirect
 	github.com/go-git/go-billy/v5 v5.5.0 // indirect
