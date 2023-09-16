@@ -17,7 +17,11 @@
 
 package ecs
 
-import "testing"
+import (
+	"encoding/json"
+	"fmt"
+	"testing"
+)
 
 func TestLookup(t *testing.T) {
 	testCases := []struct {
@@ -64,4 +68,21 @@ func BenchmarkLookup(b *testing.B) {
 			b.Fatal(err)
 		}
 	}
+}
+
+func ExampleLookup() {
+	field, err := Lookup("host.os.name", "8.10")
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	data, _ := json.MarshalIndent(field, "", "  ")
+	fmt.Printf("%s", data)
+	// Output: {
+	//   "name": "host.os.name",
+	//   "data_type": "keyword",
+	//   "array": false,
+	//   "description": "Operating system name, without the version."
+	// }
 }
