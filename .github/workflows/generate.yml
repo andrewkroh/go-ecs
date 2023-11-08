@@ -44,7 +44,7 @@ jobs:
             ecs@${{ steps.ecs-version.outputs.version }} update
             
             Update code based on https://github.com/elastic/ecs/releases/tag/${{ steps.ecs-version.outputs.version }}
-          title: ecs@${ECS_VERSION} update
+          title: ecs@${{ steps.ecs-version.outputs.version }} update
           body: Update code based on https://github.com/elastic/ecs/releases/tag/${{ steps.ecs-version.outputs.version }}
           base: main
           labels: automation
