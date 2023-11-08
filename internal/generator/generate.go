@@ -39,6 +39,7 @@ import (
 	"github.com/go-git/go-git/v5"
 	"github.com/go-git/go-git/v5/plumbing"
 	"github.com/mitchellh/hashstructure"
+	"golang.org/x/exp/maps"
 	"gopkg.in/yaml.v3"
 )
 
@@ -197,21 +198,30 @@ func getReleasesTags(repo *git.Repository) ([]*plumbing.Reference, error) {
 		return nil, err
 	}
 
-	var refs []*plumbing.Reference
+	versionToRef := map[*semver.Version]*plumbing.Reference{}
 	err = tagItr.ForEach(func(reference *plumbing.Reference) error {
 		ver := tagToSemver(reference)
 		if ver == nil || ver.PreRelease != "" {
 			return nil
 		}
 
-		refs = append(refs, reference)
+		versionToRef[ver] = reference
 		return nil
 	})
 	if err != nil {
 		return nil, err
 	}
 
-	return refs, nil
+	// Sort
+	versions := maps.Keys(versionToRef)
+	semver.Sort(versions)
+
+	var out []*plumbing.Reference
+	for _, ver := range versions {
+		out = append(out, versionToRef[ver])
+	}
+
+	return out, nil
 }
 
 func checkout(repo *git.Repository, ref *plumbing.Reference) error {
