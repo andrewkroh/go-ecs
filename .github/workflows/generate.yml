@@ -11,7 +11,10 @@ on:
 
 jobs:
   ecs-generate:
-
+    permissions:
+      # Allow job to write to a branch and open a PR.
+      contents: write
+      pull-requests: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
