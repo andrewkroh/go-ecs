@@ -216,7 +216,7 @@ func getReleasesTags(repo *git.Repository) ([]*plumbing.Reference, error) {
 	versions := maps.Keys(versionToRef)
 	semver.Sort(versions)
 
-	var out []*plumbing.Reference
+	out := make([]*plumbing.Reference, 0, len(versions))
 	for _, ver := range versions {
 		out = append(out, versionToRef[ver])
 	}
