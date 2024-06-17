@@ -5,7 +5,7 @@ go 1.21
 require (
 	github.com/coreos/go-semver v0.3.1
 	github.com/dave/jennifer v1.7.0
-	github.com/elastic/go-licenser v0.4.2-0.20230608174114-6eca7dbbc006
+	github.com/elastic/go-licenser v0.4.2
 	github.com/go-git/go-git/v5 v5.12.0
 	github.com/mitchellh/hashstructure v1.1.0
 	golang.org/x/exp v0.0.0-20240416160154-fe59bbe5cc7f
