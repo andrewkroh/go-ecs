@@ -25,34 +25,35 @@ import (
 )
 
 type field struct {
-	AllowedValues    []allowedValue `json:"allowed_values" yaml:"allowed_values"`
-	Beta             string         `json:"beta" yaml:"beta"`
-	DashedName       string         `json:"dashed_name" yaml:"dashed_name"`
-	Description      string         `json:"description" yaml:"description"`
-	DocValues        bool           `json:"doc_values" yaml:"doc_values"`
-	Example          any            `json:"example" yaml:"example"`
-	ExpectedValues   []string       `json:"expected_values" yaml:"expected_values"`
-	FlatName         string         `json:"flat_name" yaml:"flat_name"`
-	Format           string         `json:"format" yaml:"format"`
-	IgnoreAbove      int            `json:"ignore_above" yaml:"ignore_above"`
-	Index            bool           `json:"index" yaml:"index"`
-	InputFormat      string         `json:"input_format" yaml:"input_format"`
-	Level            string         `json:"level" yaml:"level"`
-	MultiFields      []multiField   `json:"multi_fields" yaml:"multi_fields"`
-	Name             string         `json:"name" yaml:"name"`
-	Normalize        any            `json:"normalize" yaml:"normalize"` // Only 8.5.0 has a string. All others use a []string.
-	Norms            bool           `json:"norms" yaml:"norms"`
-	ObjectType       string         `json:"object_type" yaml:"object_type"`
-	Order            int            `json:"order" yaml:"order"`
-	OriginalFieldset string         `json:"original_fieldset" yaml:"original_fieldset"`
-	OutputFormat     string         `json:"output_format" yaml:"output_format"`
-	OutputPrecision  int            `json:"output_precision" yaml:"output_precision"`
-	Pattern          string         `json:"pattern" yaml:"pattern"`
-	Pattern2         string         `json:"patther" yaml:"patther"` // Handle bug in 8.3.0.
-	Required         bool           `json:"required" yaml:"required"`
-	ScalingFactor    int            `json:"scaling_factor" yaml:"scaling_factor"`
-	Short            string         `json:"short" yaml:"short"`
-	Type             string         `json:"type" yaml:"type"`
+	AllowedValues       []allowedValue `json:"allowed_values" yaml:"allowed_values"`
+	Beta                string         `json:"beta" yaml:"beta"`
+	DashedName          string         `json:"dashed_name" yaml:"dashed_name"`
+	Description         string         `json:"description" yaml:"description"`
+	DocValues           bool           `json:"doc_values" yaml:"doc_values"`
+	Example             any            `json:"example" yaml:"example"`
+	ExpectedValues      []string       `json:"expected_values" yaml:"expected_values"`
+	FlatName            string         `json:"flat_name" yaml:"flat_name"`
+	Format              string         `json:"format" yaml:"format"`
+	IgnoreAbove         int            `json:"ignore_above" yaml:"ignore_above"`
+	Index               bool           `json:"index" yaml:"index"`
+	InputFormat         string         `json:"input_format" yaml:"input_format"`
+	Level               string         `json:"level" yaml:"level"`
+	MultiFields         []multiField   `json:"multi_fields" yaml:"multi_fields"`
+	Name                string         `json:"name" yaml:"name"`
+	Normalize           any            `json:"normalize" yaml:"normalize"` // Only 8.5.0 has a string. All others use a []string.
+	Norms               bool           `json:"norms" yaml:"norms"`
+	ObjectType          string         `json:"object_type" yaml:"object_type"`
+	Order               int            `json:"order" yaml:"order"`
+	OriginalFieldset    string         `json:"original_fieldset" yaml:"original_fieldset"`
+	OutputFormat        string         `json:"output_format" yaml:"output_format"`
+	OutputPrecision     int            `json:"output_precision" yaml:"output_precision"`
+	Pattern             string         `json:"pattern" yaml:"pattern"`
+	Pattern2            string         `json:"patther" yaml:"patther"` // Handle bug in 8.3.0.
+	Required            bool           `json:"required" yaml:"required"`
+	ScalingFactor       int            `json:"scaling_factor" yaml:"scaling_factor"`
+	Short               string         `json:"short" yaml:"short"`
+	SyntheticSourceKeep string         `json:"synthetic_source_keep" yaml:"synthetic_source_keep"` // Values are none (default), arrays, all.
+	Type                string         `json:"type" yaml:"type"`
 }
 
 type allowedValue struct {
