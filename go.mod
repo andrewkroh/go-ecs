@@ -1,3 +1,3 @@
 module github.com/andrewkroh/go-ecs
 
-go 1.21
+go 1.22
