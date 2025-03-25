@@ -1,6 +1,6 @@
 module generator
 
-go 1.21
+go 1.24
 
 require (
 	github.com/coreos/go-semver v0.3.1
@@ -8,7 +8,6 @@ require (
 	github.com/elastic/go-licenser v0.4.2
 	github.com/go-git/go-git/v5 v5.13.2
 	github.com/mitchellh/hashstructure v1.1.0
-	golang.org/x/exp v0.0.0-20240719175910-8a7402abbf56
 	gopkg.in/yaml.v3 v3.0.1
 )
 
