@@ -15,6 +15,9 @@
 // specific language governing permissions and limitations
 // under the License.
 
+// The generator command generates Go code from the ECS flat YAML file.
+// It produces a Go file for each ECS version and an index file that
+// maps ECS version strings to the field definitions for that version.
 package main
 
 import (
