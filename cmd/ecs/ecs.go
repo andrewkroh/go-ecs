@@ -15,6 +15,9 @@
 // specific language governing permissions and limitations
 // under the License.
 
+// The ecs command-line tool retrieves the definition of a field in the
+// Elastic Common Schema (ECS). The tool can be used to quickly look up field
+// definitions and their properties.
 package main
 
 import (

@@ -15,6 +15,9 @@
 // specific language governing permissions and limitations
 // under the License.
 
+//go:generate go run -C ../generator .
+
+// Package version contains the ECS field definitions for each version of ECS.
 package version
 
 // Field represents an ECS field.
