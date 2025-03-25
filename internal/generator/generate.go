@@ -28,6 +28,7 @@ import (
 	"io"
 	"io/fs"
 	"log"
+	"maps"
 	"net/url"
 	"os"
 	"path"
@@ -42,7 +43,6 @@ import (
 	"github.com/go-git/go-git/v5"
 	"github.com/go-git/go-git/v5/plumbing"
 	"github.com/mitchellh/hashstructure"
-	"golang.org/x/exp/maps"
 	"gopkg.in/yaml.v3"
 )
 
@@ -216,7 +216,7 @@ func getReleasesTags(repo *git.Repository) ([]*plumbing.Reference, error) {
 	}
 
 	// Sort
-	versions := maps.Keys(versionToRef)
+	versions := slices.Collect(maps.Keys(versionToRef))
 	semver.Sort(versions)
 
 	out := make([]*plumbing.Reference, 0, len(versions))
