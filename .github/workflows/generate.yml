@@ -25,8 +25,7 @@ jobs:
           cache-dependency-path: ./internal/generator/go.sum
 
       - name: generate
-        working-directory: ./internal/generator
-        run: go run .
+        run: go generate -x ./...
 
       - name: check for modified versions
         id: is-changed
