@@ -47,6 +47,7 @@ type field struct {
 	OriginalFieldset    string         `json:"original_fieldset" yaml:"original_fieldset"`
 	OutputFormat        string         `json:"output_format" yaml:"output_format"`
 	OutputPrecision     int            `json:"output_precision" yaml:"output_precision"`
+	OTEL                []otel         `json:"otel" yaml:"otel"`
 	Pattern             string         `json:"pattern" yaml:"pattern"`
 	Pattern2            string         `json:"patther" yaml:"patther"` // Handle bug in 8.3.0.
 	Required            bool           `json:"required" yaml:"required"`
@@ -76,6 +77,15 @@ type ecsField struct {
 	DataType          string `json:"data_type,omitempty"`          // Elasticsearch field data type (e.g. boolean, keyword, text).
 	ValidationPattern string `json:"validation_pattern,omitempty"` // Regular expression for validating values of the field.
 	Array             bool   `json:"array,omitempty"`              // Indicates if the value is an array.
+}
+
+type otel struct {
+	Attribute string `json:"attribute,omitempty" yaml:"attribute,omitempty"`
+	Metric    string `json:"metric,omitempty" yaml:"metric,omitempty"`
+	OTLPField string `json:"otlp_field,omitempty" yaml:"otlp_field,omitempty"`
+	Relation  string `json:"relation" yaml:"relation"`
+	Stability string `json:"stability" yaml:"stability"`
+	Note      string `json:"note,omitempty" yaml:"note,omitempty"`
 }
 
 func newECSField(f field) ecsField {

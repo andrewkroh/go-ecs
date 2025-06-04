@@ -20,7 +20,7 @@
 package version
 
 var (
-	Latest = v8_17_0
+	Latest = v9_0_0
 	Index  = map[string]map[string]*Field{
 		"1.0":    v1_0_1,
 		"1.0.1":  v1_0_1,
@@ -87,5 +87,8 @@ var (
 		"8":      v8_17_0,
 		"8.17":   v8_17_0,
 		"8.17.0": v8_17_0,
+		"9":      v9_0_0,
+		"9.0":    v9_0_0,
+		"9.0.0":  v9_0_0,
 	}
 )
