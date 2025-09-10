@@ -38,11 +38,35 @@ var (
 // Field represents an ECS field.
 type Field = version.Field
 
-// Lookup an ECS field definition. If ecsVersion is empty then the latest version
-// is used. You may specify a partial version specifier (e.g. '8', '8.1'), and
-// the latest matching version will be searched. The returned Field should not be
-// modified.
+// Lookup an ECS field definition.
+// If ecsVersion is empty, Lookup uses the latest ECS version's fields.
+// You may specify a partial version specifier (e.g. '8', '8.1'), and Lookup will
+// search for the latest matching version.
+// Do not modify the returned Field.
+// Lookup returns ErrInvalidVersion if the version string is invalid, or
+// ErrVersionNotFound if no matching version exists.
 func Lookup(fieldName, ecsVersion string) (*Field, error) {
+	fields, err := Fields(ecsVersion)
+	if err != nil {
+		return nil, err
+	}
+
+	// Lookup the field by name.
+	if f, found := fields[fieldName]; found {
+		return f, nil
+	}
+
+	return nil, ErrFieldNotFound
+}
+
+// Fields returns a map of ECS field definitions for the specified version.
+// If ecsVersion is empty, Fields returns the latest ECS version's fields.
+// You may specify a partial version specifier (e.g. '8', '8.1'), and Fields
+// will search for the latest matching version.
+// Do not modify the returned map or its values.
+// Fields returns ErrInvalidVersion if the version string is invalid, or
+// ErrVersionNotFound if no matching version exists.
+func Fields(ecsVersion string) (map[string]*Field, error) {
 	// Normalize the version.
 	semVer := strings.TrimPrefix(ecsVersion, "v")
 	if ecsVersion != semVer && semVer == "" {
@@ -61,10 +85,5 @@ func Lookup(fieldName, ecsVersion string) (*Field, error) {
 		}
 	}
 
-	// Lookup the field by name.
-	if f, found := fields[fieldName]; found {
-		return f, nil
-	}
-
-	return nil, ErrFieldNotFound
+	return fields, nil
 }
