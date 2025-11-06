@@ -43,16 +43,23 @@ OPTIONS:
                Defaults to latest version incorporated into
                github.com/andrewkroh/go-ecs at build time.
   -q           Quiet mode. No ECS definition is written to stdout.
+  -all         List all ECS fields as a JSON array.
 
 ARGUMENTS:
 
   field        The name of the ECS field to retrieve the definition for.
-               This argument is required.
+               This argument is required unless -all is specified.
 
 EXAMPLES:
 
   ecs source.ip
-    Retrieves the JSON definition of the "source.ip" ECS field. 
+    Retrieves the JSON definition of the "source.ip" ECS field.
+
+  ecs -all
+    Retrieves all ECS field definitions as a JSON array.
+
+  ecs -all -r 8.11
+    Retrieves all ECS field definitions for version 8.11 as a JSON array.
 
 EXIT STATUS:
 
@@ -64,6 +71,7 @@ EXIT STATUS:
 var (
 	ecsVersion = flag.String("r", "", "ECS release version")
 	quiet      = flag.Bool("q", false, "Quiet mode")
+	all        = flag.Bool("all", false, "List all ECS fields")
 )
 
 func main() {
@@ -74,6 +82,42 @@ func main() {
 	}
 	flag.Parse()
 
+	// Handle -all flag.
+	if *all {
+		if len(flag.Args()) > 0 {
+			fmt.Fprintln(os.Stderr, "Field name cannot be specified with -all flag.")
+			os.Exit(2)
+		}
+		if *quiet {
+			fmt.Fprintln(os.Stderr, "The -q flag cannot be used with -all flag.")
+			os.Exit(2)
+		}
+
+		fields, err := ecs.Fields(*ecsVersion)
+		if err != nil {
+			if !*quiet {
+				fmt.Fprintln(os.Stderr, err)
+			}
+			os.Exit(1)
+		}
+
+		// Convert map to slice for JSON array output.
+		fieldSlice := make([]*ecs.Field, 0, len(fields))
+		for _, field := range fields {
+			fieldSlice = append(fieldSlice, field)
+		}
+
+		// Dump as pretty JSON array.
+		data, err := json.MarshalIndent(fieldSlice, "", "  ")
+		if err != nil {
+			fmt.Fprintln(os.Stderr, err)
+			os.Exit(2)
+		}
+		fmt.Printf("%s\n", data)
+		return
+	}
+
+	// Handle single field lookup.
 	if len(flag.Args()) == 0 {
 		flag.Usage()
 	}
