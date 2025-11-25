@@ -6,7 +6,7 @@ require (
 	github.com/coreos/go-semver v0.3.1
 	github.com/dave/jennifer v1.7.1
 	github.com/elastic/go-licenser v0.4.2
-	github.com/go-git/go-git/v5 v5.16.3
+	github.com/go-git/go-git/v5 v5.16.4
 	github.com/mitchellh/hashstructure v1.1.0
 	gopkg.in/yaml.v3 v3.0.1
 )
