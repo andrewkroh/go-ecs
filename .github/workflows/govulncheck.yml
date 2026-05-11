@@ -18,9 +18,11 @@ jobs:
         uses: golang/govulncheck-action@v1
         with:
           go-version-input: stable
+          repo-checkout: false
 
       - name: Run govulncheck (generator)
         uses: golang/govulncheck-action@v1
         with:
           go-version-input: stable
           work-dir: ./internal/generator
+          repo-checkout: false
