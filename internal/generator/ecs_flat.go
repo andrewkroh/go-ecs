@@ -26,6 +26,7 @@ import (
 
 type field struct {
 	AllowedValues       []allowedValue `json:"allowed_values" yaml:"allowed_values"`
+	Alpha               string         `json:"alpha" yaml:"alpha"`
 	Beta                string         `json:"beta" yaml:"beta"`
 	DashedName          string         `json:"dashed_name" yaml:"dashed_name"`
 	Description         string         `json:"description" yaml:"description"`
